@@ -2,54 +2,83 @@
 
 This assignment will familiarize you with Python's basics.
 '''
-import math
-
 def savings(gross_pay, tax_rate, expenses):
-    """
-    Find out how much money is left after paying taxes and expenses.
+    '''Compute Remaining Pay.
 
-    Parameters: 
-        gross_pay (int): total salary for one pay period
-        tax_rate (float): tax rate between 0 and 1
-        expenses (int): money spent on expenses
+    Calculates how much money an employee keeps after taxes and expenses.
 
-    Returns:
-        int: money left over
-    """
-    after_tax = math.floor(gross_pay * (1 - tax_rate))
-    remaining = after_tax - expenses
-    return remaining
+    Process:
+        1. Apply the tax rate to gross pay and round down.
+        2. Subtract the expenses from the after-tax amount.
+
+    Parameters
+    gross_pay: int
+        Total earnings before deductions (in centavos)
+    tax_rate: float
+        Tax rate as a decimal (ex: 0.12 for 12%)
+    expenses: int
+        Expenses to be deducted (in centavos)
+
+    Returns
+    int
+        Amount left after taxes and expenses
+    '''
+    x = int(gross_pay * (1 - tax_rate))
+    x = x - expenses
+    return int(x)
 
 
 def material_waste(total_material, material_units, num_jobs, job_consumption):
-    """
-    Find out how much material is left after doing several jobs.
+    '''Determine Material Leftover.
 
-    Parameters:
-        total_material (int): starting material
-        material_units (str): unit of measurement (like "kg", "L")
-        num_jobs (int): number of jobs
-        job_consumption (int): material used per job
+    Computes how much material remains after performing a number of jobs.
 
-    Returns:
-        str: leftover material with units (e.g. "10kg")
-    """
-    consumed = num_jobs * job_consumption
-    waste = total_material - consumed
-    return str(waste) + material_units
+    Steps:
+        1. Multiply number of jobs by material used per job.
+        2. Subtract total used material from the total available.
+        3. Return as a string with units (no space between number and unit).
+
+    Parameters
+    total_material: int
+        Starting material amount
+    material_units: str
+        Unit of measurement (ex: "kg", "L")
+    num_jobs: int
+        Number of jobs performed
+    job_consumption: int
+        Material used per job
+
+    Returns
+    str
+        Remaining material with its unit (ex: "10kg")
+    '''
+    x = num_jobs * job_consumption
+    x = total_material - x
+    return str(x) + str(material_units)
 
 
 def interest(principal, rate, periods):
-    """
-    Compute the final value of money with simple interest.
+    '''Calculate Final Investment.
 
-    Parameters:
-        principal (int): initial amount of money
-        rate (float): interest rate per period (between 0 and 1)
-        periods (int): number of periods
+    Computes the final amount of an investment using simple interest.
 
-    Returns:
-        int: final amount after interest, rounded down
-    """
-    final_value = principal + (principal * rate * periods)
-    return math.floor(final_value)
+    Steps:
+        1. Multiply principal by rate and number of periods to get interest.
+        2. Add interest to the principal.
+        3. Round down to nearest whole unit.
+
+    Parameters
+    principal: int
+        Initial investment amount (in centavos)
+    rate: float
+        Interest rate per period as a decimal (ex: 0.05 for 5%)
+    periods: int
+        Number of periods invested
+
+    Returns
+    int
+        Final investment value after interest
+    '''
+    x = principal * (rate * periods)
+    x = principal + x
+    return int(x)
